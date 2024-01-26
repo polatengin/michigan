@@ -74,3 +74,16 @@ Next step is to log the diff between what exists in the `./deploy` folder and wh
 ```
 
 > **Note:** `dry-run` option is used to log the diff between what exists in the `./deploy` folder and what exists on the FTP server.
+
+Final step is to make the actual deployment to the FTP server.
+
+```yaml
+- name: 📂 Deploy to DEV environment
+  uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+  with:
+    local-dir: ./src/deploy/
+    server: ${{ secrets.FTP_SERVER }}
+    username: ${{ secrets.FTP_USERNAME }}
+    password: ${{ secrets.FTP_PASSWORD }}
+    server-dir: ${{ secrets.FTP_FOLDER }}
+```

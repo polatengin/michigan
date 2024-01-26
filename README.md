@@ -58,3 +58,19 @@ First two steps of the workflows are to build and publish the dotnet MVC app.
 ```
 
 > **Note:** `dotnet publish` command is used to publish the dotnet MVC app to the `./deploy` folder.
+
+Next step is to log the diff between what exists in the `./deploy` folder and what exists on the FTP server.
+
+```yaml
+- name: 📃 Print what changes will be made
+  uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+  with:
+    local-dir: ./src/deploy/
+    server: ${{ secrets.FTP_SERVER }}
+    username: ${{ secrets.FTP_USERNAME }}
+    password: ${{ secrets.FTP_PASSWORD }}
+    server-dir: ${{ secrets.FTP_FOLDER }}
+    dry-run: true
+```
+
+> **Note:** `dry-run` option is used to log the diff between what exists in the `./deploy` folder and what exists on the FTP server.

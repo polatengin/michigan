@@ -8,3 +8,23 @@ In order to differentiate `DEV` and `PROD` environments, there are two _Environm
 
 - `DEV` environment is triggered when a pull request is created.
 - `PROD` environment is triggered on every push to the `main` branch.
+
+> **Note:** For the sake of simplicity, _GitHub Actions_ have been configured to be triggered manually, by having a `workflow_dispatch` event. This can be changed to a `push` event on the `main` branch and a `pull_request` event on the `main` branch.
+>
+> ```yaml
+> on:
+>   workflow_dispatch:
+> ```
+>
+> ```yaml
+> on:
+>   push:
+>     branches: [ main ]
+> ```
+>
+> ```yaml
+> on:
+>   pull_request:
+> ```
+>
+> For more information, see [Events that trigger workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows).

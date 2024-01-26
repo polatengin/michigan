@@ -2,3 +2,9 @@
 
 This is a sample project to demonstrate how to deploy a dotnet MVC app to IIS using an FTP step in GitHub Actions.
 
+## Getting Started
+
+In order to differentiate `DEV` and `PROD` environments, there are two _Environments_ created on the repository settings:
+
+- `DEV` environment is triggered when a pull request is created.
+- `PROD` environment is triggered on every push to the `main` branch.

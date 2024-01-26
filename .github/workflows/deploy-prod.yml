@@ -21,7 +21,7 @@ jobs:
         working-directory: ./src
         run: dotnet publish --configuration Release --no-build --no-restore --output ./deploy
 
-      - name: 📂 Sync files
+      - name: 📂 Deploy to DEV environment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           local-dir: ./src/deploy/
@@ -29,4 +29,3 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_FOLDER }}
-          dry-run: true

@@ -42,3 +42,19 @@ Based on the _Environment_ that is being deployed, the corresponding _Environmen
 environment:
   name: DEV
 ```
+
+First two steps of the workflows are to build and publish the dotnet MVC app.
+
+```yaml
+- name: Build dotnet project
+  working-directory: ./src
+  run: |
+    dotnet restore
+    dotnet build --configuration Release --no-restore
+
+- name: Publish dotnet project
+  working-directory: ./src
+  run: dotnet publish --configuration Release --no-build --no-restore --output ./deploy
+```
+
+> **Note:** `dotnet publish` command is used to publish the dotnet MVC app to the `./deploy` folder.

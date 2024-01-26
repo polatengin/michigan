@@ -28,3 +28,17 @@ In order to differentiate `DEV` and `PROD` environments, there are two _Environm
 > ```
 >
 > For more information, see [Events that trigger workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows).
+
+There are four _Environments Secrets_ created for each _Environments_ on the repository settings:
+
+- `FTP_SERVER`
+- `FTP_USERNAME`
+- `FTP_PASSWORD`
+- `FTP_FOLDER`
+
+Based on the _Environment_ that is being deployed, the corresponding _Environment Secret_ is used in the workflow.
+
+```yaml
+environment:
+  name: DEV
+```

@@ -21,6 +21,16 @@ jobs:
         working-directory: ./src
         run: dotnet publish --configuration Release --no-build --no-restore --output ./deploy
 
+      - name: 📃 Print what changes will be made
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          local-dir: ./src/deploy/
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_FOLDER }}
+          dry-run: true
+
       - name: 📂 Deploy to DEV environment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
